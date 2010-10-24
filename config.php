@@ -13,16 +13,14 @@ $config = array(
 			'username' => 'root',
 			'password' => '',
 			'database' => 'wordpress'
+			)
 			),
-		'prefix' => 'wp_' 
-		),
 	'PunBB' => array(
 		'db' => array(
 			'host' => 'localhost',
 			'username' => 'root',
 			'password' => '',
 			'database' => 'punbb'
-			),
-		'prefix' => 'pun_'
-		)
-		);
+			)
+			)
+			);
