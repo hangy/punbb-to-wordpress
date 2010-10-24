@@ -8,5 +8,9 @@
  */
 require 'bootstrap.php';
 require 'migrate_users.php';
+require 'migrate_news.php';
+require 'migrate_blog.php';
 
 migrate_users();
+migrate_news();
+migrate_blog();
