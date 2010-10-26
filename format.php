@@ -53,7 +53,7 @@ function parse_message($text) {
 	$text = forum_htmlencode($text);
 	// If the message contains a code tag we have to split it up (text within [code][/code] shouldn't be touched)
 	if (strpos($text, '[code]') !== false && strpos($text, '[/code]') !== false) {
-		list($inside, $outside) = split_text($text, '[code]', '[/code]', $errors);
+		list($inside, $outside) = split_text($text, '[code]', '[/code]');
 		$text = implode("\0", $outside);
 	}
 
@@ -88,7 +88,7 @@ function preparse_bbcode($text) {
 	// If the message contains a code tag we have to split it up (text within [code][/code] shouldn't be touched)
 	if (strpos($text, '[code]') !== false && strpos($text, '[/code]') !== false)
 	{
-		list($inside, $outside) = split_text($text, '[code]', '[/code]', $errors);
+		list($inside, $outside) = split_text($text, '[code]', '[/code]');
 		$text = implode("\0", $outside);
 	}
 
@@ -265,5 +265,35 @@ function do_bbcode($text) {
 	$text = preg_replace($pattern, $replace, $text);
 
 	return $text;
+}
+endif;
+
+if ( !function_exists('split_text') ) :
+function split_text($text, $start, $end, $retab = true)
+{
+        $tokens = explode($start, $text);
+
+        $outside[] = $tokens[0];
+
+        $num_tokens = count($tokens);
+        for ($i = 1; $i < $num_tokens; ++$i)
+        {
+                $temp = explode($end, $tokens[$i]);
+
+                if (count($temp) != 2)
+                {
+                        return array(null, array($text));
+                }
+                $inside[] = $temp[0];
+                $outside[] = $temp[1];
+        }
+
+        if ($retab)
+        {
+                $spaces = str_repeat(' ', 8);
+                $inside = str_replace("\t", $spaces, $inside);
+        }
+
+        return array($inside, $outside);
 }
 endif;

@@ -10,7 +10,9 @@ require 'bootstrap.php';
 require 'migrate_users.php';
 require 'migrate_news.php';
 require 'migrate_blog.php';
+require 'migrate_pms.php';
 
 migrate_users();
 migrate_news();
 migrate_blog();
+migrate_pms();
