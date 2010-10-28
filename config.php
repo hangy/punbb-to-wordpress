@@ -6,6 +6,8 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
+
+// Here, we define the database configuration for both sites.
 $config = array(
 	'WordPress' => array(
 		'db' => array(
@@ -23,4 +25,23 @@ $config = array(
 			'database' => 'punbb'
 			)
 			)
+			);
+				
+			// Since Simple:Press has it's own usergroups and PunBB does the same,
+			// it probably is the best idea to setup the groups in advance
+			// and to setup the mapping here.
+			// NOTE: Simple:Press allows user to be in more than one group while
+			//       PunBB does not. We do not support more than one group here!
+			$usergroups = array(
+			// PunBB => Simple:Press
+			1 => 8,
+			4 => 7,
+			2 => 5,
+			3 => 6,
+			10 => 7,
+			13 => 7,
+			17 => 6,
+			20 => 9,
+			21 => 9,
+			22 => 6
 			);
