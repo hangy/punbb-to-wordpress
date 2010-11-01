@@ -9,7 +9,7 @@
 if ( !function_exists('forum_htmlencode') ) :
 function forum_htmlencode($str)
 {
-	return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+	return htmlspecialchars($str);
 }
 endif;
 
