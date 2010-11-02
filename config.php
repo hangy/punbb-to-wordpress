@@ -26,7 +26,7 @@ $config = array(
 			)
 			)
 			);
-				
+
 			// Since Simple:Press has it's own usergroups and PunBB does the same,
 			// it probably is the best idea to setup the groups in advance
 			// and to setup the mapping here.
@@ -45,3 +45,45 @@ $config = array(
 			21 => 9,
 			22 => 6
 			);
+				
+			// Just like user groups, I expect forums to be set up before running
+			// this script.
+			$forums = array(
+			// PunBB => Simple:Press
+			28 => 15,
+			36 => 14,
+			53 => 13,
+			52 => 16,
+			50 => 12,
+			4 => 36,
+			2 => 34,
+			8 => 35,
+			9 => 18,
+			7 => 37,
+			42 => 27,
+			29 => 22,
+			26 => 9,
+			18 => 10,
+			17 => 8,
+			13 => 32,
+			14 => 31,
+			55 => 23,
+			3 => 25,
+			22 => 20,
+			6 => 4,
+			5 => 1,
+			20 => 3,
+			12 => 7,
+			32 => 19,
+			21 => 6,
+			43 => 2,
+			31 => 17,
+			19 => 26,
+			15 => 5,
+			30 => 24,
+			49 => 33,
+			10 => 30,
+			11 => 29,
+			24 => 28,
+			54 => 11,
+			16 => 21);
