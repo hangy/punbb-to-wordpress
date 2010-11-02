@@ -81,7 +81,7 @@ function migrate_blog() {
 			$curl,
 			gmdate('Y-m-d H:i:s', $cdate),
 			gmdate('Y-m-d H:i:s', $cdate),
-			$ctext,
+			parse_message($ctext),
 			$cuserid);
 			$wpcomment_stmt->execute();
 		}
