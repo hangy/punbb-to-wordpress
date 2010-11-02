@@ -27,6 +27,7 @@ function migrate_pms() {
 	$wp_sfmessage_stmt = $wp_sfmessage->prepare($insert_wp_sfmessage);
 
 	while ($pm = $pms->fetch_assoc()) {
+		$name = 'pm-' . $pm['id'];
 		$type = 1;
 		$status = read === $pm['status'] ? 1 : 0;
 		$inbox = !$pm['deleted_by_receiver'];
@@ -46,7 +47,7 @@ function migrate_pms() {
 		$inbox,
 		$sentbox,
 		$reply,
-		sanitize_title_with_dashes($pm['subject']));
+		$name);
 		$wp_sfmessage_stmt->execute();
 	}
 
