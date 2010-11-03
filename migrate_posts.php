@@ -60,7 +60,7 @@ function migrate_posts() {
 		gmdate('Y-m-d H:i:s', $post['posted']),
 		$post['topic_id'],
 		$user_id,
-		$post['forum_id'],
+		$forums[(int)$post['forum_id']],
 		$post['poster'],
 		$mail,
 		$status,
