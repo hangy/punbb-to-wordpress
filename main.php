@@ -14,6 +14,7 @@ require 'migrate_blog.php';
 require 'migrate_pms.php';
 require 'update_comment_count.php';
 require 'migrate_topics.php';
+require 'migrate_posts.php';
 
 migrate_users();
 migrate_memberships();
@@ -22,3 +23,4 @@ migrate_blog();
 migrate_pms();
 update_comment_count();
 migrate_topics();
+migrate_posts();
