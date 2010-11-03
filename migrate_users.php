@@ -14,7 +14,8 @@ function migrate_users() {
 	. '`email`, `title`, `realname`, `url`, `jabber`, `icq`, `msn`, `aim`, '
 	. '`yahoo`, `location`, `signature`, `last_post`, '
 	. '`registered`, `last_visit`, `num_posts` '
-	. 'FROM `punbb_users`';
+	. 'FROM `punbb_users` '
+	. 'WHERE `group_id` <> 0';
 
 	$insert_wp_user = 'INSERT INTO `wp_users` '
 	. '(`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, '

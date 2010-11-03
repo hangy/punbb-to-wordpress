@@ -12,9 +12,9 @@ function migrate_memberships() {
 	
 	$factory = DbConnectionFactory::getInstance();
 
-	// TODO: What about group_id = 0 - not activated accounts.
 	$users_query = 'SELECT `id`, `group_id` '
-	. 'FROM `punbb_users`';
+	. 'FROM `punbb_users` '
+	. 'WHERE `group_id` <> 0';
 
 	$insert_wp_sfmemberships = 'INSERT INTO `wp_sfmemberships` '
 	. '(`user_id`, `usergroup_id`) '
