@@ -220,7 +220,7 @@ function do_bbcode($text) {
 	{
 		$text = preg_replace('#\[quote=(&quot;|"|\'|)(.*?)\\1\]#e', '"<strong>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." said: </strong>\r\n<blockquote>"', $text);
 		$text = preg_replace('#\[quote\]\s*#', '<blockquote>', $text);
-		$text = preg_replace('#\s*\[\/quote\]#S', '</blockquote><hr/>', $text);
+		$text = preg_replace('#\s*\[\/quote\]#S', '</blockquote>', $text);
 	}
 
 	$pattern[] = '/\[list(?:=([1a\*]))?\]((?>(?:(?!\[list(?:=(?:[1a\*]))\]|\[\/list\]).+?)|(?R))*)\[\/list\]/ems';
@@ -234,7 +234,7 @@ function do_bbcode($text) {
 
 	$replace[] = '<strong>$1</strong>';
 	$replace[] = '<em>$1</em>';
-	$replace[] = '<span class="bbu">$1</span>';
+	$replace[] = '<u>$1</u>';
 	$replace[] = '<span style="color: $1">$2</span>';
 	$replace[] = '</p><h5>$1</h5><p>';
 
