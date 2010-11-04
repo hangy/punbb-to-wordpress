@@ -11,7 +11,7 @@ function migrate_users() {
 	$factory = DbConnectionFactory::getInstance();
 
 	$users_query = 'SELECT `id`, `username`, `password`, `salt`, '
-	. '`email`, `title`, `realname`, `url`, `jabber`, `icq`, `msn`, `aim`, '
+	. '`email`, `title`, `realname`, IFNULL(`url`, '."''".') AS `url`, `jabber`, `icq`, `msn`, `aim`, '
 	. '`yahoo`, `location`, `signature`, `last_post`, '
 	. '`registered`, `last_visit`, `num_posts` '
 	. 'FROM `punbb_users` '

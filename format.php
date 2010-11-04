@@ -218,7 +218,7 @@ if ( !function_exists('do_bbcode') ) :
 function do_bbcode($text) {
 	if (strpos($text, '[quote') !== false)
 	{
-		$text = preg_replace('#\[quote=(&quot;|"|\'|)(.*?)\\1\]#e', '"<strong>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." said: </strong>"', $text);
+		$text = preg_replace('#\[quote=(&quot;|"|\'|)(.*?)\\1\]#e', '"<strong>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." said: </strong>\r\n<blockquote>"', $text);
 		$text = preg_replace('#\[quote\]\s*#', '<blockquote>', $text);
 		$text = preg_replace('#\s*\[\/quote\]#S', '</blockquote><hr/>', $text);
 	}
