@@ -218,9 +218,9 @@ if ( !function_exists('do_bbcode') ) :
 function do_bbcode($text) {
 	if (strpos($text, '[quote') !== false)
 	{
-		$text = preg_replace('#\[quote=(&quot;|"|\'|)(.*?)\\1\]#e', '"<strong>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." said: </strong>\r\n<blockquote>"', $text);
-		$text = preg_replace('#\[quote\]\s*#', '<blockquote>', $text);
-		$text = preg_replace('#\s*\[\/quote\]#S', '</blockquote>', $text);
+		$text = preg_replace('#\[quote=(&quot;|"|\'|)(.*?)\\1\]#e', '"<strong>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." said: </strong>\r\n\r\n<blockquote>\r\n"', $text);
+		$text = preg_replace('#\[quote\]\s*#', '<blockquote>\r\n', $text);
+		$text = preg_replace('#\s*\[\/quote\]#S', "\r\n</blockquote>\r\n\r\n", $text);
 	}
 
 	$pattern[] = '/\[list(?:=([1a\*]))?\]((?>(?:(?!\[list(?:=(?:[1a\*]))\]|\[\/list\]).+?)|(?R))*)\[\/list\]/ems';
