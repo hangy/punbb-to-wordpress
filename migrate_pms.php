@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('migrate_pms') ) :
 function migrate_pms() {
 	$factory = DbConnectionFactory::getInstance();
 
@@ -33,7 +32,7 @@ function migrate_pms() {
 		$inbox = !$pm['deleted_by_receiver'];
 		$sentbox = !$pm['deleted_by_sender'];
 		$reply = false;
-		
+
 		$wp_sfmessage_stmt->bind_param(
 			'isiisisiiiis',
 		$pm['id'],
@@ -56,4 +55,3 @@ function migrate_pms() {
 	$pms->close();
 	$pbb->close();
 }
-endif;

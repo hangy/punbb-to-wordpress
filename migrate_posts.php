@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('migrate_posts') ) :
 function migrate_posts() {
 	global $forums;
 
@@ -76,4 +75,3 @@ function migrate_posts() {
 	$posts->close();
 	$pbb->close();
 }
-endif;

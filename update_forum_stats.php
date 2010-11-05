@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('update_forum_stats') ) :
 function update_forum_stats() {
 	$factory = DbConnectionFactory::getInstance();
 
@@ -59,4 +58,3 @@ function update_forum_stats() {
 	$forums->close();
 	$wp->close();
 }
-endif;

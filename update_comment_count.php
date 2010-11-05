@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('update_comment_count') ) :
 function update_comment_count() {
 	$factory = DbConnectionFactory::getInstance();
 
@@ -42,4 +41,3 @@ function update_comment_count() {
 	$posts->close();
 	$wp->close();
 }
-endif;

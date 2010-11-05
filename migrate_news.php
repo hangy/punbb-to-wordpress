@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('migrate_news') ) :
 function migrate_news() {
 	$factory = DbConnectionFactory::getInstance();
 
@@ -71,13 +70,13 @@ function migrate_news() {
 
 		$comments_stmt->bind_param('i', $new['id']);
 		$comments_stmt->execute();
-		
-	$comments_stmt->bind_result($cuserid, $cuser, $cmail, $curl, $ctext, $cdate, $cuserip);
+
+		$comments_stmt->bind_result($cuserid, $cuser, $cmail, $curl, $ctext, $cdate, $cuserip);
 		while ($comments_stmt->fetch()) {
-		if (null == $cuserip) {
+			if (null == $cuserip) {
 				$cuserip = '';
 			}
-			
+				
 			$wpcomment_stmt->bind_param(
 				'issssssis',
 			$id,
@@ -104,4 +103,3 @@ function migrate_news() {
 	$news->close();
 	$pbb->close();
 }
-endif;

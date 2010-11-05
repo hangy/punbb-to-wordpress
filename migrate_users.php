@@ -6,7 +6,6 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('migrate_users') ) :
 function migrate_users() {
 	$factory = DbConnectionFactory::getInstance();
 
@@ -94,9 +93,7 @@ function migrate_users() {
 	$users->close();
 	$pbb->close();
 }
-endif;
 
-if ( !function_exists('add_user_meta') ) :
 function add_user_meta($user, $pbkey, $wpkey, $stmt) {
 	$value = $user[$pbkey];
 	if (null === $value || 0 == count($value)) {
@@ -106,11 +103,8 @@ function add_user_meta($user, $pbkey, $wpkey, $stmt) {
 	$stmt->bind_param('iss', $user['id'], $wpkey, $value);
 	$stmt->execute();
 }
-endif;
 
-if ( !function_exists('add_user_meta_manually') ) :
 function add_user_meta_manually($user, $key, $value, $stmt) {
 	$stmt->bind_param('iss', $user['id'], $key, $value);
 	$stmt->execute();
 }
-endif;

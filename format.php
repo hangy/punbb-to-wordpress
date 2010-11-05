@@ -11,35 +11,26 @@ class Target {
 	const SimplePress = 1;
 }
 
-if ( !function_exists('forum_htmlencode') ) :
 function forum_htmlencode($str)
 {
 	return htmlspecialchars($str);
 }
-endif;
 
-if ( !function_exists('forum_trim') ) :
 function forum_trim($str, $charlist = " \t\n\r\x0b\xc2\xa0")
 {
 	return trim($str, $charlist);
 }
-endif;
 
-if ( !function_exists('escape_cdata') ) :
 function forum_linebreaks($str)
 {
 	return str_replace(array("\r\n", "\r"), "\n", $str);
 }
-endif;
 
-if ( !function_exists('escape_cdata') ) :
 function escape_cdata($str)
 {
 	return str_replace(']]>', ']]&gt;', $str);
 }
-endif;
 
-if ( !function_exists('parse_signature') ) :
 function parse_signature($text, $target = Target::WordPress) {
 	$text = forum_htmlencode($text);
 	$text = do_bbcode($text);
@@ -53,9 +44,7 @@ function parse_signature($text, $target = Target::WordPress) {
 
 	return $text;
 }
-endif;
 
-if ( !function_exists('parse_message') ) :
 function parse_message($text, $target = Target::WordPress) {
 	$text = forum_htmlencode($text);
 	// If the message contains a code tag we have to split it up (text within [code][/code] shouldn't be touched)
@@ -90,9 +79,7 @@ function parse_message($text, $target = Target::WordPress) {
 
 	return $text;
 }
-endif;
 
-if ( !function_exists('preparse_bbcode') ) :
 function preparse_bbcode($text) {
 	// If the message contains a code tag we have to split it up (text within [code][/code] shouldn't be touched)
 	if (strpos($text, '[code]') !== false && strpos($text, '[/code]') !== false)
@@ -143,9 +130,7 @@ function preparse_bbcode($text) {
 
 	return forum_trim($text);
 }
-endif;
 
-if ( !function_exists('do_clickable') ) :
 function do_clickable($text) {
 	$text = ' '.$text;
 
@@ -154,9 +139,7 @@ function do_clickable($text) {
 
 	return substr($text, 1);
 }
-endif;
 
-if ( !function_exists('handle_url_tag') ) :
 function handle_url_tag($url, $link = '', $bbcode = false)
 {
 	$full_url = str_replace(array(' ', '\'', '`', '"'), array('%20', '', '', ''), $url);
@@ -181,9 +164,7 @@ function handle_url_tag($url, $link = '', $bbcode = false)
 	else
 	return '<a href="'.$full_url.'">'.$link.'</a>';
 }
-endif;
 
-if ( !function_exists('handle_img_tag') ) :
 function handle_img_tag($url, $alt = null)
 {
 	if ($alt == null) {
@@ -194,9 +175,7 @@ function handle_img_tag($url, $alt = null)
 
 	return $img_tag;
 }
-endif;
 
-if ( !function_exists('handle_list_tag') ) :
 function handle_list_tag($content, $type = '*')
 {
 	if (strlen($type) != 1)
@@ -221,9 +200,7 @@ function handle_list_tag($content, $type = '*')
 
 	return '</p>'.$content.'<p>';
 }
-endif;
 
-if ( !function_exists('do_bbcode') ) :
 function do_bbcode($text) {
 	if (strpos($text, '[quote') !== false)
 	{
@@ -275,34 +252,31 @@ function do_bbcode($text) {
 
 	return $text;
 }
-endif;
 
-if ( !function_exists('split_text') ) :
 function split_text($text, $start, $end, $retab = true)
 {
-        $tokens = explode($start, $text);
+	$tokens = explode($start, $text);
 
-        $outside[] = $tokens[0];
+	$outside[] = $tokens[0];
 
-        $num_tokens = count($tokens);
-        for ($i = 1; $i < $num_tokens; ++$i)
-        {
-                $temp = explode($end, $tokens[$i]);
+	$num_tokens = count($tokens);
+	for ($i = 1; $i < $num_tokens; ++$i)
+	{
+		$temp = explode($end, $tokens[$i]);
 
-                if (count($temp) != 2)
-                {
-                        return array(null, array($text));
-                }
-                $inside[] = $temp[0];
-                $outside[] = $temp[1];
-        }
+		if (count($temp) != 2)
+		{
+			return array(null, array($text));
+		}
+		$inside[] = $temp[0];
+		$outside[] = $temp[1];
+	}
 
-        if ($retab)
-        {
-                $spaces = str_repeat(' ', 8);
-                $inside = str_replace("\t", $spaces, $inside);
-        }
+	if ($retab)
+	{
+		$spaces = str_repeat(' ', 8);
+		$inside = str_replace("\t", $spaces, $inside);
+	}
 
-        return array($inside, $outside);
+	return array($inside, $outside);
 }
-endif;

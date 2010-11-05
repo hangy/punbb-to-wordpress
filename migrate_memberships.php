@@ -6,10 +6,9 @@
  To Public License, Version 2, as published by Sam Hocevar. See
  http://sam.zoy.org/wtfpl/COPYING for more details.
  */
-if ( !function_exists('migrate_memberships') ) :
 function migrate_memberships() {
 	global $usergroups;
-	
+
 	$factory = DbConnectionFactory::getInstance();
 
 	$users_query = 'SELECT `id`, `group_id` '
@@ -38,4 +37,3 @@ function migrate_memberships() {
 	$users->close();
 	$pbb->close();
 }
-endif;
