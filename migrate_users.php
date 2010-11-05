@@ -77,7 +77,7 @@ function migrate_users() {
 		$user['username'],
 		$pm,
 		$avatar,
-		parse_signature($user['signature']),
+		parse_signature($user['signature'], Target::SimplePress),
 		$user['num_posts'],
 		gmdate('Y-m-d H:i:s', $user['last_visit']),
 		gmdate('Y-m-d H:i:s', $user['last_visit']),

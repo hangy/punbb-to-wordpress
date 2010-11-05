@@ -56,7 +56,7 @@ function migrate_posts() {
 		$wp_sfposts_stmt->bind_param(
 			'issiiissiiisi',
 		$post['id'],
-		parse_message($post['message']),
+		parse_message($post['message'], Target::WordPress),
 		gmdate('Y-m-d H:i:s', $post['posted']),
 		$post['topic_id'],
 		$user_id,

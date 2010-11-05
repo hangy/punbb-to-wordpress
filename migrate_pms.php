@@ -42,7 +42,7 @@ function migrate_pms() {
 		$pm['receiver_id'],
 		$pm['subject'],
 		$type,
-		parse_message($pm['body']),
+		parse_message($pm['body'], Target::SimplePress),
 		$status,
 		$inbox,
 		$sentbox,

@@ -6,6 +6,11 @@
  * @license http://www.gnu.org/licenses/gpl.html GPL version 2 or higher
  * @package PunBB
  */
+class Target {
+	const WordPress = 0;
+	const SimplePress = 1;
+}
+
 if ( !function_exists('forum_htmlencode') ) :
 function forum_htmlencode($str)
 {
@@ -35,21 +40,23 @@ function escape_cdata($str)
 endif;
 
 if ( !function_exists('parse_signature') ) :
-function parse_signature($text) {
+function parse_signature($text, $target = Target::WordPress) {
 	$text = forum_htmlencode($text);
 	$text = do_bbcode($text);
 
-	// Deal with newlines, tabs and multiple spaces
-	$pattern = array("\n", "\t", '  ', '  ');
-	$replace = array('<br />', '&nbsp; &nbsp; ', '&nbsp; ', ' &nbsp;');
-	$text = str_replace($pattern, $replace, $text);
+	if (Target::WordPress == $target) {
+		// Deal with newlines, tabs and multiple spaces
+		$pattern = array("\n", "\t", '  ', '  ');
+		$replace = array('<br />', '&nbsp; &nbsp; ', '&nbsp; ', ' &nbsp;');
+		$text = str_replace($pattern, $replace, $text);
+	}
 
 	return $text;
 }
 endif;
 
 if ( !function_exists('parse_message') ) :
-function parse_message($text) {
+function parse_message($text, $target = Target::WordPress) {
 	$text = forum_htmlencode($text);
 	// If the message contains a code tag we have to split it up (text within [code][/code] shouldn't be touched)
 	if (strpos($text, '[code]') !== false && strpos($text, '[/code]') !== false) {
@@ -59,10 +66,12 @@ function parse_message($text) {
 
 	$text = do_bbcode($text);
 
-	// Deal with newlines, tabs and multiple spaces
-	$pattern = array("\n", "\t", '  ', '  ');
-	$replace = array('<br />', '&nbsp; &nbsp; ', '&nbsp; ', ' &nbsp;');
-	$text = str_replace($pattern, $replace, $text);
+	if (Target::WordPress == $target) {
+		// Deal with newlines, tabs and multiple spaces
+		$pattern = array("\n", "\t", '  ', '  ');
+		$replace = array('<br />', '&nbsp; &nbsp; ', '&nbsp; ', ' &nbsp;');
+		$text = str_replace($pattern, $replace, $text);
+	}
 
 	// If we split up the message before we have to concatenate it together again (code tags)
 	if (isset($inside)) {

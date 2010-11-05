@@ -86,7 +86,7 @@ function migrate_news() {
 			$curl,
 			gmdate('Y-m-d H:i:s', $cdate),
 			gmdate('Y-m-d H:i:s', $cdate),
-			parse_message($ctext),
+			parse_message($ctext, Target::WordPress),
 			$cuserid,
 			$cuserip);
 			$wpcomment_stmt->execute();
