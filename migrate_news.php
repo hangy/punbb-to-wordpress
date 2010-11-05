@@ -76,7 +76,7 @@ function migrate_news() {
 			if (null == $cuserip) {
 				$cuserip = '';
 			}
-				
+
 			$wpcomment_stmt->bind_param(
 				'issssssis',
 			$id,

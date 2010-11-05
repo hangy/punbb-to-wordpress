@@ -45,7 +45,7 @@ $config = array(
 			21 => 9,
 			22 => 6
 			);
-				
+
 			// Just like user groups, I expect forums to be set up before running
 			// this script.
 			$forums = array(
